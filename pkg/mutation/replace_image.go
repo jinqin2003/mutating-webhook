@@ -25,11 +25,12 @@ func (ri replaceImage) Mutate(pod *corev1.Pod) (*corev1.Pod, error) {
 	ri.Logger = ri.Logger.WithField("mutation", ri.Name())
 	mpod := pod.DeepCopy()
 
-	image := os.Getenv("IMAGE_PATH")
+	imageRegistry := os.Getenv("HARBOR_REGISTRY")
 
 	for i, container := range mpod.Spec.Containers {
 		if s.Contains(container.Image, "docker.cogitocorp.us") {
-			ri.Logger.Debugf("pod image %s is replaced with %s", container.Image, s.Replace(container.Image, "docker.cogitocorp.us", "ctrl.ctrl-green.us-east-1.harbor.cogitocorp.io", 1))
+			image := s.Replace(container.Image, "docker.cogitocorp.us", imageRegistry, 1)
+			ri.Logger.Debugf("pod image %s is replaced by %s", container.Image, image)
 			mpod.Spec.Containers[i].Image = image
 		}
 	}
