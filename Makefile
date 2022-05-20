@@ -12,12 +12,12 @@ build:
 .PHONY: docker-build
 docker-build:
 	@echo "\n📦 Building harbor-proxy-webhook Docker image..."
-	docker build -t ctrl.ctrl-green.us-east-1.harbor.cogitocorp.io/harbor-proxy-webhook:latest .
+	docker build -t ctrl.ctrl-green.us-east-1.harbor.cogitocorp.io/docker-snapshot/harbor-proxy-webhook:latest .
 
 .PHONY: docker-push
 docker-push:
 	@echo "\n📦 Pushing harbor-proxy-webhook Docker image to ctrl.ctrl-green.us-east-1.harbor.cogitocorp.io ..."
-	docker push ctrl.ctrl-green.us-east-1.harbor.cogitocorp.io/docker-snapshot/harbor-proxy-webhook
+	docker push ctrl.ctrl-green.us-east-1.harbor.cogitocorp.io/docker-snapshot/harbor-proxy-webhook:latest
 
 .PHONY: docker-build-push
 docker-build-push: docker-build docker-push
