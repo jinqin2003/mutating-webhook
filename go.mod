@@ -1,6 +1,6 @@
 module harbor-proxy-webhook
 
-o 1.16
+go 1.16
 
 require (
 	github.com/google/go-cmp v0.5.5 // indirect
