@@ -1,4 +1,4 @@
-module harbor-proxy-webhook
+module github.com/cogitocorp/harbor-proxy-webhook
 
 go 1.16
 
