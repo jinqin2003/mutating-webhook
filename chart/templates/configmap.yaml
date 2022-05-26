@@ -10,5 +10,6 @@ data:
   tlsEnabled: {{ .tlsEnabled | quote }}
   logLevel: {{ .logLevel | quote }}
   logAsJSON: {{ .logAsJSON | quote }}
-  harborRegistry: {{ .harborRegistry }}
+  sourceRegistry: {{ .sourceRegistry | quote }}
+  targetRegistry: {{ .targetRegistry | quote }}
   {{- end }}

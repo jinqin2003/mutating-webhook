@@ -12,12 +12,11 @@ build:
 .PHONY: docker-build
 docker-build:
 	@echo "\n📦 Building harbor-proxy-webhook Docker image..."
-	docker build -t harbor-proxy-webhook:latest .
+	docker build -t docker.io/jinqin2003/harbor-proxy-webhook:latest .
 
 .PHONY: docker-push
 docker-push:
 	@echo "\n📦 Pushing harbor-proxy-webhook Docker image to docker.io ..."
-	docker tag harbor-proxy-webhook docker.io/jinqin2003/harbor-proxy-webhook:latest
 	docker push docker.io/jinqin2003/harbor-proxy-webhook:latest
 
 .PHONY: docker-build-push

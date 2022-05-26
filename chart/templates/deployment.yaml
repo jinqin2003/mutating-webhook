@@ -40,11 +40,16 @@ spec:
                 configMapKeyRef:
                   name: harbor-proxy-webhook
                   key: logAsJSON
-            - name: HARBOR_REGISTRY
+            - name: SOURCE_REGISTRY
               valueFrom:
                 configMapKeyRef:
                   name: harbor-proxy-webhook
-                  key: harborRegistry
+                  key: sourceRegistry
+            - name: TARGET_REGISTRY
+              valueFrom:
+                configMapKeyRef:
+                  name: harbor-proxy-webhook
+                  key: targetRegistry
           livenessProbe:
             httpGet:
               path: /health

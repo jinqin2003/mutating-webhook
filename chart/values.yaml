@@ -13,7 +13,7 @@ fullnameOverride: "harbor-proxy-webhook.acme.com"
 
 image:
   repository: docker.io/jinqin2003/harbor-proxy-webhook
-  pullPolicy: IfNotPresent
+  pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
   tag: "latest"
 
@@ -25,7 +25,8 @@ configmap:
   tlsEnabled: "true"
   logLevel: "trace"
   logAsJSON: "true"
-  harborRegistry: "docker.io"
+  sourceRegistry: "docker.cogitocorp.us"
+  targetRegistry: "docker.io"
 
 # tagging -- These values are mapped to labels based off of the [Cloud Resource Tagging Policy](https://docs.google.com/document/d/1DiR8zmcQJocltuQEzRQhl6d37W3NnxGwaPa1vbo38M0/edit)
 tagging:
