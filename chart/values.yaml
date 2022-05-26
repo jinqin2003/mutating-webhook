@@ -1,0 +1,43 @@
+# Default values for harbor-proxy-webhook.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+annotations: {}
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: "harbor-proxy-webhook.acme.com"
+
+image:
+  repository: docker.io/jinqin2003/harbor-proxy-webhook
+  pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: "latest"
+
+service:
+  type: ClusterIP
+  port: 443
+
+configmap:
+  tlsEnabled: "true"
+  logLevel: "trace"
+  logAsJSON: "true"
+  harborRegistry: "docker.io"
+
+# tagging -- These values are mapped to labels based off of the [Cloud Resource Tagging Policy](https://docs.google.com/document/d/1DiR8zmcQJocltuQEzRQhl6d37W3NnxGwaPa1vbo38M0/edit)
+tagging:
+  finance:
+    # tagging.finance.class -- This values are mapped to labels based off of the [Cloud Resource Tagging Policy](https://docs.google.com/document/d/1DiR8zmcQJocltuQEzRQhl6d37W3NnxGwaPa1vbo38M0/edit)
+    class: non-revenue
+    # tagging.finance.class -- This values are mapped to labels based off of the [Cloud Resource Tagging Policy](https://docs.google.com/document/d/1DiR8zmcQJocltuQEzRQhl6d37W3NnxGwaPa1vbo38M0/edit)
+    costcenter: ~
+  ownership:
+    # tagging.ownership.team -- This values are mapped to labels based off of the [Cloud Resource Tagging Policy](https://docs.google.com/document/d/1DiR8zmcQJocltuQEzRQhl6d37W3NnxGwaPa1vbo38M0/edit)
+    team: engineering.sre
+  operations:
+    environmentLevel: "lab"
+  security:
+    dataConfidentiality: "internal"
+    exposure: "private"

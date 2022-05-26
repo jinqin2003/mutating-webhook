@@ -1,0 +1,65 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: {{ template "harbor-proxy-webhook.name" . }}
+  name: {{ template "harbor-proxy-webhook.name" . }}
+  namespace: {{ .Release.Namespace }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ template "harbor-proxy-webhook.name" . }}
+  template:
+    metadata:
+      labels:
+        app: {{ template "harbor-proxy-webhook.name" . }}
+        {{- include "harbor-proxy-webhook.taggingLabels" . | nindent 8 }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      containers:
+        - name: {{ template "harbor-proxy-webhook.name" . }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          env:
+            - name: TLS
+              valueFrom:
+                configMapKeyRef:
+                  name: harbor-proxy-webhook
+                  key: tlsEnabled
+            - name: LOG_LEVEL
+              valueFrom:
+                configMapKeyRef:
+                  name: harbor-proxy-webhook
+                  key: logLevel
+            - name: LOG_JSON
+              valueFrom:
+                configMapKeyRef:
+                  name: harbor-proxy-webhook
+                  key: logAsJSON
+            - name: HARBOR_REGISTRY
+              valueFrom:
+                configMapKeyRef:
+                  name: harbor-proxy-webhook
+                  key: harborRegistry
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 443
+              scheme: HTTPS
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 443
+              scheme: HTTPS
+          volumeMounts:
+            - name: tls
+              mountPath: "/etc/admission-webhook/tls"
+              readOnly: true
+      volumes:
+        - name: tls
+          secret:
+            secretName: {{ include "harbor-proxy-webhook.name" . }}-ca

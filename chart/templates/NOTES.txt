@@ -1,0 +1,3 @@
+To obtain information related to the webhook you can run the following command:
+
+  kubectl describe mutatingwebhookconfiguration {{ template "harbor-proxy-webhook.fullname" . }} --namespace {{ .Release.Namespace }}
