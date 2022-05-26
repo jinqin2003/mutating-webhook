@@ -1,7 +1,7 @@
 apiVersion: admissionregistration.k8s.io/v1
 kind: MutatingWebhookConfiguration
 metadata:
-  name: {{ template "harbor-proxy-webhook.name" . }}
+  name: {{ template "harbor-proxy-webhook.fullname" . }}
   {{- with .Values.annotations }}
   annotations:
     {{- toYaml . | nindent 4 }}

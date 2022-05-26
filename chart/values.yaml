@@ -4,7 +4,8 @@
 
 replicaCount: 1
 
-annotations: {}
+annotations:
+  cert-manager.io/inject-ca-from: default/harbor-proxy-webhook-ca
 
 imagePullSecrets: []
 nameOverride: ""
