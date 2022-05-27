@@ -15,6 +15,10 @@ spec:
       labels:
         app: {{ template "harbor-proxy-webhook.name" . }}
         {{- include "harbor-proxy-webhook.taggingLabels" . | nindent 8 }}
+      annotations:
+        {{- if .Values.podTemplate.annotations }}
+{{ toYaml .Values.podTemplate.annotations | indent 8 }}
+        {{- end }}
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
@@ -50,16 +54,30 @@ spec:
                 configMapKeyRef:
                   name: harbor-proxy-webhook
                   key: targetRegistry
+          {{- if .Values.livenessProbe.enabled }}
           livenessProbe:
             httpGet:
               path: /health
               port: 443
-              scheme: HTTPS
+              scheme: {{ .Values.livenessProbe.scheme }}
+            initialDelaySeconds: {{ .Values.livenessProbe.initialDelaySeconds }}
+            periodSeconds: {{ .Values.livenessProbe.periodSeconds }}
+            timeoutSeconds: {{ .Values.livenessProbe.timeoutSeconds }}
+            successThreshold: {{ .Values.livenessProbe.successThreshold }}
+            failureThreshold: {{ .Values.livenessProbe.failureThreshold }}
+          {{- end }}
+          {{- if .Values.readinessProbe.enabled }}
           readinessProbe:
             httpGet:
               path: /health
               port: 443
-              scheme: HTTPS
+              scheme: {{ .Values.readinessProbe.scheme }}
+            initialDelaySeconds: {{ .Values.readinessProbe.initialDelaySeconds }}
+            periodSeconds: {{ .Values.readinessProbe.periodSeconds }}
+            timeoutSeconds: {{ .Values.readinessProbe.timeoutSeconds }}
+            successThreshold: {{ .Values.readinessProbe.successThreshold }}
+            failureThreshold: {{ .Values.readinessProbe.failureThreshold }}
+          {{- end }}
           volumeMounts:
             - name: tls
               mountPath: "/etc/admission-webhook/tls"

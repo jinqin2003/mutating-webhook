@@ -3,6 +3,11 @@ test:
 	@echo "\n🛠️  Running unit tests..."
 	go test ./...
 
+.PHONY: test-chart
+test-chart:
+	@echo "\n🛠️  Dry running helm chart..."
+	helm --namespace harbor install harbor-proxy-webhook ./chart --dry-run
+
 .PHONY: build
 build:
 	@echo "\n🔧  Building Go binaries..."
@@ -25,7 +30,7 @@ docker-build-push: docker-build docker-push
 .PHONY: deploy
 deploy:
 	@echo "\n🔧 Deploying harbor-proxy-webhook..."
-	helm --namespace harbor install harbor-proxy-webhook chart
+	helm --namespace harbor install harbor-proxy-webhook ./chart
 
 .PHONY: delete
 delete:

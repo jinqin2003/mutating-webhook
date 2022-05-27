@@ -5,11 +5,11 @@
 replicaCount: 1
 
 annotations:
-  cert-manager.io/inject-ca-from: default/harbor-proxy-webhook-ca
+  cert-manager.io/inject-ca-from: harbor/harbor-proxy-webhook-ca
 
 imagePullSecrets: []
 nameOverride: ""
-fullnameOverride: "harbor-proxy-webhook.acme.com"
+fullnameOverride: "harbor-proxy-webhook.cogitocorp.io"
 
 image:
   repository: docker.io/jinqin2003/harbor-proxy-webhook
@@ -17,9 +17,31 @@ image:
   # Overrides the image tag whose default is the chart appVersion.
   tag: "latest"
 
+# We only need to check every 30s since harbor webhook is not a high-throughput service.
+livenessProbe:
+  enabled: true
+  periodSeconds: 30
+  initialDelaySeconds: 5
+  timeoutSeconds: 5
+  successThreshold: 1
+  failureThreshold: 5
+  scheme: HTTP
+readinessProbe:
+  enabled: false
+  periodSeconds: 30
+  initialDelaySeconds: 5
+  timeoutSeconds: 5
+  successThreshold: 1
+  failureThreshold: 5
+  scheme: HTTP
+
 service:
   type: ClusterIP
   port: 443
+
+podTemplate:
+  annotations:
+    sidecar.istio.io/inject: "false"
 
 configmap:
   tlsEnabled: "true"
