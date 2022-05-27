@@ -25,12 +25,13 @@ docker-build-push: docker-build docker-push
 .PHONY: deploy
 deploy:
 	@echo "\n🔧 Deploying harbor-proxy-webhook..."
-	helm --namespace default install harbor-proxy-webhook chart
+	helm --namespace harbor install harbor-proxy-webhook chart
 
 .PHONY: delete
 delete:
 	@echo "\n🔧 Deleting harbor-proxy-webhook..."
-	helm uninstall harbor-proxy-webhook
+	kubectl --namespace harbor delete secrets harbor-proxy-webhook-ca
+	helm uninstall --namespace harbor harbor-proxy-webhook
 
 .PHONY: pod
 pod:
