@@ -1,16 +1,16 @@
 apiVersion: admissionregistration.k8s.io/v1
 kind: MutatingWebhookConfiguration
 metadata:
-  name: {{ template "harbor-proxy-webhook.fullname" . }}
+  name: {{ template "mutating-webhook.fullname" . }}
   {{- with .Values.annotations }}
   annotations:
     {{- toYaml . | nindent 4 }}
   {{- end }}
   labels:
-    app: {{ template "harbor-proxy-webhook.name" . }}
+    app: {{ template "mutating-webhook.name" . }}
   namespace: {{ .Release.Namespace }}
 webhooks:
-  - name: {{ template "harbor-proxy-webhook.fullname" . }}
+  - name: {{ template "mutating-webhook.fullname" . }}
     namespaceSelector:
       matchLabels:
         admission-webhook: enabled
@@ -23,7 +23,7 @@ webhooks:
     clientConfig:
       service:
         namespace: {{ .Release.Namespace }}
-        name: {{ template "harbor-proxy-webhook.name" . }}
+        name: {{ template "mutating-webhook.name" . }}
         path: /mutate-pods
         port: {{ .Values.service.port }}
     admissionReviewVersions: ["v1"]

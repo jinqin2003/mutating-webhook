@@ -2,12 +2,12 @@ apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
   labels:
-    app: {{ template "harbor-proxy-webhook.name" . }}
-  name: {{ template "harbor-proxy-webhook.name" . }}-ca
+    app: {{ template "mutating-webhook.name" . }}
+  name: {{ template "mutating-webhook.name" . }}-ca
   namespace: {{ .Release.Namespace }}
 spec:
-  secretName: {{ template "harbor-proxy-webhook.name" . }}-ca
+  secretName: {{ template "mutating-webhook.name" . }}-ca
   dnsNames:
-    - {{ template "harbor-proxy-webhook.name" . }}.{{ .Release.Namespace }}.svc
+    - {{ template "mutating-webhook.name" . }}.{{ .Release.Namespace }}.svc
   issuerRef:
     name: selfsigned-issuer

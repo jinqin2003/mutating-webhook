@@ -1,7 +1,7 @@
 apiVersion: v2
-name: harbor-proxy-webhook
-home: https://github.com/cogitocorp/k8s-charts
-description: A `harbor-proxy-webhook` Helm chart
+name: mutating-webhook
+home: https://github.com/jinqin2003/k8s-charts
+description: A `mutating-webhook` Helm chart
 type: application
 version: 1.2.0
 appVersion: 1.16.0

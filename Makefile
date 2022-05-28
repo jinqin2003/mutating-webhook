@@ -6,7 +6,7 @@ test:
 .PHONY: test-chart
 test-chart:
 	@echo "\n🛠️  Dry running helm chart..."
-	helm --namespace harbor install harbor-proxy-webhook ./chart --dry-run
+	helm --namespace harbor install mutating-webhook ./chart --dry-run
 
 .PHONY: build
 build:
@@ -16,27 +16,27 @@ build:
 
 .PHONY: docker-build
 docker-build:
-	@echo "\n📦 Building harbor-proxy-webhook Docker image..."
-	docker build -t docker.io/jinqin2003/harbor-proxy-webhook:latest .
+	@echo "\n📦 Building mutating-webhook Docker image..."
+	docker build -t docker.io/jinqin2003/mutating-webhook:latest .
 
 .PHONY: docker-push
 docker-push:
-	@echo "\n📦 Pushing harbor-proxy-webhook Docker image to docker.io ..."
-	docker push docker.io/jinqin2003/harbor-proxy-webhook:latest
+	@echo "\n📦 Pushing mutating-webhook Docker image to docker.io ..."
+	docker push docker.io/jinqin2003/mutating-webhook:latest
 
 .PHONY: docker-build-push
 docker-build-push: docker-build docker-push
 
 .PHONY: deploy
 deploy:
-	@echo "\n🔧 Deploying harbor-proxy-webhook..."
-	helm --namespace harbor install harbor-proxy-webhook ./chart
+	@echo "\n🔧 Deploying mutating-webhook..."
+	helm --namespace harbor install mutating-webhook ./chart
 
 .PHONY: delete
 delete:
-	@echo "\n🔧 Deleting harbor-proxy-webhook..."
-	kubectl --namespace harbor delete secrets harbor-proxy-webhook-ca
-	helm uninstall --namespace harbor harbor-proxy-webhook
+	@echo "\n🔧 Deleting mutating-webhook..."
+	kubectl --namespace harbor delete secrets mutating-webhook-ca
+	helm uninstall --namespace harbor mutating-webhook
 
 .PHONY: pod
 pod:

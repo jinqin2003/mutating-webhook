@@ -1,18 +1,18 @@
-# Default values for harbor-proxy-webhook.
+# Default values for mutating-webhook.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
 replicaCount: 1
 
 annotations:
-  cert-manager.io/inject-ca-from: harbor/harbor-proxy-webhook-ca
+  cert-manager.io/inject-ca-from: harbor/mutating-webhook-ca
 
 imagePullSecrets: []
 nameOverride: ""
-fullnameOverride: "harbor-proxy-webhook.cogitocorp.io"
+fullnameOverride: "mutating-webhook.jinqin2003.io"
 
 image:
-  repository: docker.io/jinqin2003/harbor-proxy-webhook
+  repository: docker.io/jinqin2003/mutating-webhook
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
   tag: "latest"
@@ -47,7 +47,7 @@ configmap:
   tlsEnabled: "true"
   logLevel: "trace"
   logAsJSON: "true"
-  sourceRegistry: "docker.cogitocorp.us"
+  sourceRegistry: "docker.jinqin2003.us"
   targetRegistry: "docker.io"
 
 # tagging -- These values are mapped to labels based off of the [Cloud Resource Tagging Policy](https://docs.google.com/document/d/1DiR8zmcQJocltuQEzRQhl6d37W3NnxGwaPa1vbo38M0/edit)

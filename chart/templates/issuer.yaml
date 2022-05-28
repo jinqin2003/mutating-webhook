@@ -2,7 +2,7 @@ apiVersion: cert-manager.io/v1
 kind: Issuer
 metadata:
   labels:
-    app: {{ template "harbor-proxy-webhook.name" . }}
+    app: {{ template "mutating-webhook.name" . }}
   name: selfsigned-issuer
   namespace: {{ .Release.Namespace }}
 spec:

@@ -7,7 +7,7 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/cogitocorp/harbor-proxy-webhook/pkg/admission"
+	"github.com/jinqin2003/mutating-webhook/pkg/admission"
 	"github.com/sirupsen/logrus"
 	admissionv1 "k8s.io/api/admission/v1"
 )

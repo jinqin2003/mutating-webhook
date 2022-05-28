@@ -2,19 +2,19 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: {{ template "harbor-proxy-webhook.name" . }}
-  name: {{ template "harbor-proxy-webhook.name" . }}
+    app: {{ template "mutating-webhook.name" . }}
+  name: {{ template "mutating-webhook.name" . }}
   namespace: {{ .Release.Namespace }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: {{ template "harbor-proxy-webhook.name" . }}
+      app: {{ template "mutating-webhook.name" . }}
   template:
     metadata:
       labels:
-        app: {{ template "harbor-proxy-webhook.name" . }}
-        {{- include "harbor-proxy-webhook.taggingLabels" . | nindent 8 }}
+        app: {{ template "mutating-webhook.name" . }}
+        {{- include "mutating-webhook.taggingLabels" . | nindent 8 }}
       annotations:
         {{- if .Values.podTemplate.annotations }}
 {{ toYaml .Values.podTemplate.annotations | indent 8 }}
@@ -25,34 +25,34 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       containers:
-        - name: {{ template "harbor-proxy-webhook.name" . }}
+        - name: {{ template "mutating-webhook.name" . }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
             - name: TLS
               valueFrom:
                 configMapKeyRef:
-                  name: harbor-proxy-webhook
+                  name: mutating-webhook
                   key: tlsEnabled
             - name: LOG_LEVEL
               valueFrom:
                 configMapKeyRef:
-                  name: harbor-proxy-webhook
+                  name: mutating-webhook
                   key: logLevel
             - name: LOG_JSON
               valueFrom:
                 configMapKeyRef:
-                  name: harbor-proxy-webhook
+                  name: mutating-webhook
                   key: logAsJSON
             - name: SOURCE_REGISTRY
               valueFrom:
                 configMapKeyRef:
-                  name: harbor-proxy-webhook
+                  name: mutating-webhook
                   key: sourceRegistry
             - name: TARGET_REGISTRY
               valueFrom:
                 configMapKeyRef:
-                  name: harbor-proxy-webhook
+                  name: mutating-webhook
                   key: targetRegistry
           {{- if .Values.livenessProbe.enabled }}
           livenessProbe:
@@ -85,4 +85,4 @@ spec:
       volumes:
         - name: tls
           secret:
-            secretName: {{ include "harbor-proxy-webhook.name" . }}-ca
+            secretName: {{ include "mutating-webhook.name" . }}-ca

@@ -8,8 +8,8 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/cogitocorp/harbor-proxy-webhook/pkg/mutation"
-	"github.com/cogitocorp/harbor-proxy-webhook/pkg/validation"
+	"github.com/jinqin2003/mutating-webhook/pkg/mutation"
+	"github.com/jinqin2003/mutating-webhook/pkg/validation"
 	"github.com/sirupsen/logrus"
 	admissionv1 "k8s.io/api/admission/v1"
 	corev1 "k8s.io/api/core/v1"
