@@ -1,4 +1,4 @@
-module github.com/cogitocorp/harbor-proxy-webhook
+module github.com/jinqin2003/mutating-webhook
 
 go 1.16
 
