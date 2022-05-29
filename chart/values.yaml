@@ -5,11 +5,11 @@
 replicaCount: 1
 
 annotations:
-  cert-manager.io/inject-ca-from: harbor/mutating-webhook-ca
+  cert-manager.io/inject-ca-from: mutating/mutating-webhook-ca
 
 imagePullSecrets: []
 nameOverride: ""
-fullnameOverride: "mutating-webhook.jinqin2003.io"
+fullnameOverride: "mutating-webhook.acme.com"
 
 image:
   repository: docker.io/jinqin2003/mutating-webhook
@@ -47,7 +47,7 @@ configmap:
   tlsEnabled: "true"
   logLevel: "trace"
   logAsJSON: "true"
-  sourceRegistry: "docker.jinqin2003.us"
+  sourceRegistry: "docker.fake.io"
   targetRegistry: "docker.io"
 
 # tagging -- These values are mapped to labels based off of the [Cloud Resource Tagging Policy](https://docs.google.com/document/d/1DiR8zmcQJocltuQEzRQhl6d37W3NnxGwaPa1vbo38M0/edit)

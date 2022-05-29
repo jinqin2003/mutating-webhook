@@ -1,4 +1,5 @@
 github_user = jinqin2003
+namespace = mutating
 
 .PHONY: test
 test:
@@ -8,7 +9,7 @@ test:
 .PHONY: test-chart
 test-chart:
 	@echo "\n🛠️  Dry running helm chart..."
-	helm --namespace harbor install mutating-webhook ./chart --dry-run
+	helm --namespace $(namespace) install mutating-webhook ./chart --dry-run
 
 .PHONY: build
 build:
@@ -32,13 +33,13 @@ docker-build-push: docker-build docker-push
 .PHONY: deploy
 deploy:
 	@echo "\n🔧 Deploying mutating-webhook..."
-	helm --namespace harbor install mutating-webhook ./chart
+	helm --namespace $(namespace) install mutating-webhook ./chart
 
 .PHONY: delete
 delete:
 	@echo "\n🔧 Deleting mutating-webhook..."
-	kubectl --namespace harbor delete secrets mutating-webhook-ca
-	helm uninstall --namespace harbor mutating-webhook
+	kubectl --namespace $(namespace) delete secrets mutating-webhook-ca
+	helm uninstall --namespace $(namespace) mutating-webhook
 
 .PHONY: pod
 pod:

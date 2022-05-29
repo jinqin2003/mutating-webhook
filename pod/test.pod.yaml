@@ -8,6 +8,6 @@ spec:
     - args:
         - sleep
         - "3600"
-      image: docker.cogitocorp.us/nginx:1.21
+      image: docker.fake.io/nginx:1.21
       name: test-nginx
   restartPolicy: Always
