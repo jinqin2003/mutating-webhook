@@ -1,3 +1,5 @@
+github_user = jinqin2003
+
 .PHONY: test
 test:
 	@echo "\n🛠️  Running unit tests..."
@@ -17,12 +19,12 @@ build:
 .PHONY: docker-build
 docker-build:
 	@echo "\n📦 Building mutating-webhook Docker image..."
-	docker build -t docker.io/jinqin2003/mutating-webhook:latest .
+	docker build -t docker.io/$(github_user)/mutating-webhook:latest .
 
 .PHONY: docker-push
 docker-push:
 	@echo "\n📦 Pushing mutating-webhook Docker image to docker.io ..."
-	docker push docker.io/jinqin2003/mutating-webhook:latest
+	docker push docker.io//$(github_user)/mutating-webhook:latest
 
 .PHONY: docker-build-push
 docker-build-push: docker-build docker-push
