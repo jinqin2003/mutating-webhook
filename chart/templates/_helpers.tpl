@@ -51,23 +51,6 @@ app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
 {{/*
-Tagging labels
-*/}}
-{{- define "mutating-webhook.taggingLabels" -}}
-team: sre
-Cogito.Finance.Class: {{ default "revenue" .Values.tagging.finance.class }}
-{{- if .Values.tagging.finance.costcenter }}
-Cogito.Finance.CostCenter: {{ .Values.tagging.finance.costcenter }}
-{{- else }}
-Cogito.Finance.CostCenter: cogito.{{ .Values.tagging.ownership.team }}
-{{- end }}
-Cogito.Operations.EnvironmentLevel: {{ required ".Values.tagging.operations.environmentLevel is required!" .Values.tagging.operations.environmentLevel }}
-Cogito.Ownership.Team: {{ required ".Values.tagging.ownership.team is required!" .Values.tagging.ownership.team }}
-Cogito.Security.DataConfidentiality: {{ required ".Values.tagging.security.dataConfidentiality is required!" .Values.tagging.security.dataConfidentiality }}
-Cogito.Security.Exposure: {{ required ".Values.tagging.security.exposure is required!" .Values.tagging.security.exposure }}
-{{- end -}}
-
-{{/*
 Create the name of the service account to use
 */}}
 {{- define "mutating-webhook.serviceAccountName" -}}

@@ -49,19 +49,3 @@ configmap:
   logAsJSON: "true"
   sourceRegistry: "docker.fake.io"
   targetRegistry: "docker.io"
-
-# tagging -- These values are mapped to labels based off of the [Cloud Resource Tagging Policy](https://docs.google.com/document/d/1DiR8zmcQJocltuQEzRQhl6d37W3NnxGwaPa1vbo38M0/edit)
-tagging:
-  finance:
-    # tagging.finance.class -- This values are mapped to labels based off of the [Cloud Resource Tagging Policy](https://docs.google.com/document/d/1DiR8zmcQJocltuQEzRQhl6d37W3NnxGwaPa1vbo38M0/edit)
-    class: non-revenue
-    # tagging.finance.class -- This values are mapped to labels based off of the [Cloud Resource Tagging Policy](https://docs.google.com/document/d/1DiR8zmcQJocltuQEzRQhl6d37W3NnxGwaPa1vbo38M0/edit)
-    costcenter: ~
-  ownership:
-    # tagging.ownership.team -- This values are mapped to labels based off of the [Cloud Resource Tagging Policy](https://docs.google.com/document/d/1DiR8zmcQJocltuQEzRQhl6d37W3NnxGwaPa1vbo38M0/edit)
-    team: engineering.sre
-  operations:
-    environmentLevel: "lab"
-  security:
-    dataConfidentiality: "internal"
-    exposure: "private"

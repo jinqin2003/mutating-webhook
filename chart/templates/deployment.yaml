@@ -14,7 +14,6 @@ spec:
     metadata:
       labels:
         app: {{ template "mutating-webhook.name" . }}
-        {{- include "mutating-webhook.taggingLabels" . | nindent 8 }}
       annotations:
         {{- if .Values.podTemplate.annotations }}
 {{ toYaml .Values.podTemplate.annotations | indent 8 }}

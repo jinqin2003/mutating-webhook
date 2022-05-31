@@ -1,0 +1,1 @@
+{"buildTargets":[".PHONY","build","delete","delete-pod","deploy","docker-build","docker-build-push","docker-push","make","pod","test","test-chart"],"launchTargets":[],"customConfigurationProvider":{"workspaceBrowse":{"browsePath":[],"compilerArgs":[]},"fileIndex":[]}}

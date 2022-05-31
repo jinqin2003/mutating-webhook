@@ -1,0 +1,356 @@
+make all --print-data-base --no-builtin-variables --no-builtin-rules --question
+# GNU Make 3.81
+# Copyright (C) 2006  Free Software Foundation, Inc.
+# This is free software; see the source for copying conditions.
+# There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE.
+
+# This program built for i386-apple-darwin11.3.0
+
+# Make data base, printed on Tue May 31 08:58:30 2022
+
+# Variables
+
+# automatic
+<D = $(patsubst %/,%,$(dir $<))
+# automatic
+?F = $(notdir $?)
+# environment
+ELECTRON_NO_ATTACH_CONSOLE = 1
+# environment
+VSCODE_LOG_NATIVE = false
+# automatic
+?D = $(patsubst %/,%,$(dir $?))
+# automatic
+@D = $(patsubst %/,%,$(dir $@))
+# automatic
+@F = $(notdir $@)
+# makefile
+CURDIR := /Users/jinqin/work/mutating-webhook
+# makefile
+SHELL = /bin/sh
+# environment
+VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
+# environment
+_ = /usr/bin/make
+# makefile (from `Makefile', line 1)
+MAKEFILE_LIST :=  Makefile
+# environment
+VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
+# environment
+VSCODE_VERBOSE_LOGGING = true
+# environment
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/2y/18byjxc16bg5x9_jny4763c00000gp/T/vscode-ipc-c1da4e1e-e13a-4b39-a626-4bc8fe39e641.sock
+# environment
+VSCODE_CWD = /Users/jinqin/work/mutating-webhook
+# environment
+GOPROXY = https://proxy.golang.org,direct
+# environment
+PATH = /usr/local/opt/libpq/bin:/Users/jinqin/go/bin:/Users/jinqin/.istioctl/bin:/Users/jinqin/.asdf/shims:/usr/local/opt/asdf/bin:/usr/local/opt/openjdk/bin:18253HOME/.asdf/installs/poetry/1.1.4/bin:/bin:/usr/bin:/usr/local/bin:/usr/sbin:/usr/local/sbin:/sbin:/Users/jinqin/Library/Application Support/cloud-code/installer/google-cloud-sdk/bin:/Users/jinqin/google-cloud-sdk/bin
+# environment
+LSCOLORS = Gxfxcxdxbxegedabagacad
+# environment
+GOPATH = /Users/jinqin/go
+# environment
+VSCODE_LOG_STACK = false
+# environment
+ELECTRON_RUN_AS_NODE = 1
+# default
+.FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
+# environment
+CLOUDSDK_METRICS_ENVIRONMENT = cloudcode.vscode
+# environment
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.kCLej7c82l/Listeners
+# automatic
+%F = $(notdir $%)
+# environment
+CLOUDSDK_METRICS_ENVIRONMENT_VERSION = 1.18.2
+# environment
+VSCODE_PIPE_LOGGING = true
+# environment
+PWD = /Users/jinqin/work/mutating-webhook
+# environment
+ORIGINAL_XDG_CURRENT_DESKTOP = undefined
+# environment
+GOMODCACHE = /Users/jinqin/go/pkg/mod
+# environment
+HOME = /Users/jinqin
+# default
+MAKEFILEPATH = $(shell /usr/bin/xcode-select -print-path 2>/dev/null || echo /Developer)/Makefiles
+# environment
+VSCODE_CLI = 1
+# environment
+VSCODE_CODE_CACHE_PATH = /Users/jinqin/Library/Application Support/Code/CachedData/c3511e6c69bb39013c4a4b7b9566ec1ca73fc4d5
+# environment
+LOGNAME = jinqin
+# environment
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
+# environment
+ZSH = /Users/jinqin/.oh-my-zsh
+# environment
+VSCODE_HANDLES_UNCAUGHT_ERRORS = true
+# automatic
+^D = $(patsubst %/,%,$(dir $^))
+# environment
+XPC_FLAGS = 0x0
+# environment
+COLORTERM = truecolor
+# default
+MAKE = $(MAKE_COMMAND)
+# environment
+LC_TERMINAL = iTerm2
+# environment
+SHLVL = 3
+# default
+MAKE_VERSION := 3.81
+# environment
+USER = jqin
+# makefile
+.DEFAULT_GOAL := test
+# default
+MAKECMDGOALS := all
+# environment
+TERM_SESSION_ID = w0t0p0:9B8677DC-2A35-4B27-B244-108C7837D332
+# environment
+LESS = -R
+# automatic
+%D = $(patsubst %/,%,$(dir $%))
+# default
+MAKE_COMMAND := /Library/Developer/CommandLineTools/usr/bin/make
+# environment
+TERM_PROGRAM = iTerm.app
+# default
+.VARIABLES := 
+# environment
+TMPDIR = /var/folders/2y/18byjxc16bg5x9_jny4763c00000gp/T/
+# makefile (from `Makefile', line 2)
+namespace = mutating
+# automatic
+*F = $(notdir $*)
+# environment
+VSCODE_IPC_HOOK = /Users/jinqin/Library/Application Support/Code/1.67.2-main.sock
+# makefile
+MAKEFLAGS = Rrqp
+# environment
+MFLAGS = -Rrqp
+# automatic
+*D = $(patsubst %/,%,$(dir $*))
+# environment
+TERM_PROGRAM_VERSION = 3.4.14
+# environment
+XPC_SERVICE_NAME = 0
+# environment
+LC_TERMINAL_VERSION = 3.4.14
+# automatic
++D = $(patsubst %/,%,$(dir $+))
+# automatic
++F = $(notdir $+)
+# environment
+ITERM_SESSION_ID = w0t0p0:9B8677DC-2A35-4B27-B244-108C7837D332
+# environment
+COLORFGBG = 15;0
+# environment
+__CF_USER_TEXT_ENCODING = 0x1F6:0x0:0x0
+# default
+MAKEFILES := 
+# automatic
+<F = $(notdir $<)
+# environment
+ITERM_PROFILE = Default
+# makefile (from `Makefile', line 1)
+github_user = jinqin2003
+# environment
+PAGER = less
+# environment
+LC_ALL = C
+# automatic
+^F = $(notdir $^)
+# default
+SUFFIXES := 
+# environment
+ASDF_DIR = /usr/local/opt/asdf
+# default
+.INCLUDE_DIRS = /usr/local/include
+# environment
+MAKELEVEL := 0
+# environment
+SREIMAGE = docker.cogitocorp.us/sre-env:2.0.0-b5-5a5ac0b
+# environment
+LANG = C
+# environment
+TERM = xterm-256color
+# environment
+VSCODE_PID = 35688
+# variable set hash-table stats:
+# Load=85/1024=8%, Rehash=0, Collisions=5/109=5%
+
+# Pattern-specific Variable Values
+
+# No pattern-specific variable values.
+
+# Directories
+
+# . (device 16777221, inode 31817389): 16 files, no impossibilities.
+
+# 16 files, no impossibilities in 1 directories.
+
+# Implicit Rules
+
+# No implicit rules.
+
+# Files
+
+# Not a target:
+all:
+#  Command-line target.
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has not been updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+docker-build:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 22):
+	@echo "\n📦 Building mutating-webhook Docker image..."
+	docker build -t docker.io/$(github_user)/mutating-webhook:latest .
+	
+
+.PHONY: test test-chart build docker-build docker-push docker-build-push deploy delete pod delete-pod
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+.SUFFIXES:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+Makefile:
+#  Implicit rule search has been done.
+#  Last modified 2022-05-31 08:58:14
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+test:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 6):
+	@echo "\n🛠️  Running unit tests..."
+	go test ./...
+	
+
+docker-build-push: docker-build docker-push
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+
+build:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 16):
+	@echo "\n🔧  Building Go binaries..."
+	GOOS=darwin GOARCH=amd64 go build -o bin/admission-webhook-darwin-amd64 .
+	GOOS=linux GOARCH=amd64 go build -o bin/admission-webhook-linux-amd64 .
+	
+
+delete-pod:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 52):
+	@echo "\n♻️ Deleting test pod..."
+	kubectl delete -f pod/test.pod.yaml
+	kubectl delete -f pod/apps.ns.yaml
+	
+
+# Not a target:
+.DEFAULT:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+test-chart:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 11):
+	@echo "\n🛠️  Dry running helm chart..."
+	helm --namespace $(namespace) install mutating-webhook ./chart --dry-run
+	
+
+delete:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 40):
+	@echo "\n🔧 Deleting mutating-webhook..."
+	kubectl --namespace $(namespace) delete secrets mutating-webhook-ca
+ 
+make: *** No rule to make target `all'.  Stop.
+
+	helm uninstall --namespace $(namespace) mutating-webhook
+	
+
+pod:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 46):
+	@echo "\n🚀 Deploying test pod..."
+	kubectl apply -f pod/apps.ns.yaml
+	kubectl apply -f pod/test.pod.yaml
+	
+
+deploy:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 35):
+	@echo "\n🔧 Deploying mutating-webhook..."
+	helm --namespace $(namespace) install mutating-webhook ./chart
+	
+
+docker-push:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 27):
+	@echo "\n📦 Pushing mutating-webhook Docker image to docker.io ..."
+	docker push docker.io//$(github_user)/mutating-webhook:latest
+	
+
+# files hash-table stats:
+# Load=15/1024=1%, Rehash=0, Collisions=0/48=0%
+# VPATH Search Paths
+
+# No `vpath' search paths.
+
+# No general (`VPATH' variable) search path.
+
+# # of strings in strcache: 1
+# # of strcache buffers: 1
+# strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
+# strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
+
+# Finished Make data base on Tue May 31 08:58:30 2022
+
+ 
