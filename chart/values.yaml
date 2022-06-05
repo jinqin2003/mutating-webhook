@@ -49,3 +49,8 @@ configmap:
   logAsJSON: "true"
   sourceRegistry: "docker.fake.io"
   targetRegistry: "docker.io"
+
+metrics:
+  scrape: "true"
+  path: "/metrics"
+  port: "8008"

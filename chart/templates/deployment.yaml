@@ -15,9 +15,9 @@ spec:
       labels:
         app: {{ template "mutating-webhook.name" . }}
       annotations:
-        prometheus.io/scrape: "true"
-        prometheus.io/path: /metrics
-        prometheus.io/port: "7777"
+        prometheus.io/scrape: {{ .Values.metrics.scrape | quote }}
+        prometheus.io/path: {{ .Values.metrics.path }}
+        prometheus.io/port: {{ .Values.metrics.port | quote }}
         {{- if .Values.podTemplate.annotations }}
 {{ toYaml .Values.podTemplate.annotations | indent 8 }}
         {{- end }}

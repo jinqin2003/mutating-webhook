@@ -20,50 +20,50 @@ import (
 var (
 	validationRequests = promauto.NewCounter(
 		prometheus.CounterOpts{
-			Name: "harbor_proxy_webhook_validation_requests_total",
-			Help: "harbor proxy webhook validation HTTP Requests",
+			Name: "mutating_webhook_validation_requests_total",
+			Help: "mutating webhook validation HTTP Requests",
 		})
 
 	validationnRequestErrors = promauto.NewCounter(
 		prometheus.CounterOpts{
-			Name: "harbor_proxy_webhook_validation_request_errors_total",
-			Help: "harbor proxy webhook validation HTTP request errors",
+			Name: "mutating_webhook_validation_request_errors_total",
+			Help: "mutating webhook validation HTTP request errors",
 		})
 
 	validationnResponseStatus = promauto.NewCounterVec(
 		prometheus.CounterOpts{
-			Name: "harbor_proxy_webhook_validation_response_status",
-			Help: "harbor proxy webhook validation HTTP response status",
+			Name: "mutating_webhook_validation_response_status",
+			Help: "mutating webhook validation HTTP response status",
 		}, []string{"status"})
 
 	validationnHTTPRequestDuration = promauto.NewHistogram(
 		prometheus.HistogramOpts{
-			Name: "harbor_proxy_webhook_validationn_http_request_duration_seconds",
-			Help: "harbor proxy webhook validationn HTTP request duration seconds",
+			Name: "mutating_webhook_validationn_http_request_duration_seconds",
+			Help: "mutating webhook validationn HTTP request duration seconds",
 		})
 
 	mutationRequests = promauto.NewCounter(
 		prometheus.CounterOpts{
-			Name: "harbor_proxy_webhook_mutation_requests_total",
-			Help: "harbor proxy webhook mutation HTTP requests",
+			Name: "mutating_webhook_mutation_requests_total",
+			Help: "mutating webhook mutation HTTP requests",
 		})
 
 	mutationRequestErrors = promauto.NewCounter(
 		prometheus.CounterOpts{
-			Name: "harbor_proxy_webhook_mutation_request_errors_total",
-			Help: "harbor proxy webhook mutation HTTP request errors",
+			Name: "mutating_webhook_mutation_request_errors_total",
+			Help: "mutating webhook mutation HTTP request errors",
 		})
 
 	mutationResponseStatus = promauto.NewCounterVec(
 		prometheus.CounterOpts{
-			Name: "harbor_proxy_webhook_mutation_response_status",
-			Help: "harbor proxy webhook mutation HTTP response status",
+			Name: "mutating_webhook_mutation_response_status",
+			Help: "mutating webhook mutation HTTP response status",
 		}, []string{"status"})
 
 	mutationHTTPRequestDuration = promauto.NewHistogram(
 		prometheus.HistogramOpts{
-			Name: "harbor_proxy_webhook_mutation_http_request_duration_seconds",
-			Help: "harbor proxy webhook mutation HTTP request duration seconds",
+			Name: "mutating_webhook_mutation_http_request_duration_seconds",
+			Help: "mutating webhook mutation HTTP request duration seconds",
 		})
 )
 
@@ -81,8 +81,8 @@ func main() {
 
 	// Prometheus metrics need to be served off a separate port so we can disable mTLS
 	go func() {
-		http.ListenAndServe(":7777", promMux)
-		logrus.Print("Listening on port 7777 for prometheus metrics...")
+		http.ListenAndServe(":8008", promMux)
+		logrus.Print("Listening on port 8008 for prometheus metrics...")
 	}()
 
 	// start the server
