@@ -17,6 +17,27 @@ build:
 	GOOS=darwin GOARCH=amd64 go build -o bin/admission-webhook-darwin-amd64 .
 	GOOS=linux GOARCH=amd64 go build -o bin/admission-webhook-linux-amd64 .
 
+.PHONY: install-minikube
+install-minikube:
+	@echo "\n📦 Installing minikube on mac os..."
+	@brew install minikube
+	@minikube start --kubernetes-version=v1.23.6
+
+.PHONY: start-cluster
+start-cluster:
+	@echo "\n📦 Starting cluster..."
+	@minikube start --kubernetes-version=v1.23.6
+
+.PHONY: stop-cluster
+stop-cluster:
+	@echo "\n📦 Stopping cluster..."
+	minikube stop
+
+.PHONY: delete-cluster
+delete-cluster:
+	@echo "\n📦 Deleting cluster..."
+	@minikube delete --all
+
 .PHONY: install-cert-manager
 install-cert-manager:
 	@echo "\n📦 Installing cert-manager..."
