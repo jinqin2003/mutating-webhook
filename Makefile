@@ -50,7 +50,7 @@ uninstall-prometheus:
 portforward-prometheus:
 	@echo "\n📦 Port forwarding prometheus..."
 	@export POD_NAME=$(kubectl get pods --namespace telemetry -l "app=prometheus,component=server" -o jsonpath="{.items[0].metadata.name}")
-	kubectl --namespace telemetry port-forward $$POD_NAME 9090
+	kubectl --namespace telemetry port-forward ${POD_NAME} 9090
 
 .PHONY: docker-build
 docker-build:
