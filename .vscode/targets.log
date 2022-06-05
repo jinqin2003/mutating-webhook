@@ -7,7 +7,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 
 # This program built for i386-apple-darwin11.3.0
 
-# Make data base, printed on Tue May 31 08:58:30 2022
+# Make data base, printed on Tue May 31 09:20:32 2022
 
 # Variables
 
@@ -15,8 +15,6 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 <D = $(patsubst %/,%,$(dir $<))
 # automatic
 ?F = $(notdir $?)
-# environment
-ELECTRON_NO_ATTACH_CONSOLE = 1
 # environment
 VSCODE_LOG_NATIVE = false
 # automatic
@@ -40,13 +38,13 @@ VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /var/folders/2y/18byjxc16bg5x9_jny4763c00000gp/T/vscode-ipc-c1da4e1e-e13a-4b39-a626-4bc8fe39e641.sock
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/2y/18byjxc16bg5x9_jny4763c00000gp/T/vscode-ipc-c83ae71a-99be-4740-a4b7-b7f0dbd35765.sock
 # environment
-VSCODE_CWD = /Users/jinqin/work/mutating-webhook
+VSCODE_CWD = /
 # environment
 GOPROXY = https://proxy.golang.org,direct
 # environment
-PATH = /usr/local/opt/libpq/bin:/Users/jinqin/go/bin:/Users/jinqin/.istioctl/bin:/Users/jinqin/.asdf/shims:/usr/local/opt/asdf/bin:/usr/local/opt/openjdk/bin:18253HOME/.asdf/installs/poetry/1.1.4/bin:/bin:/usr/bin:/usr/local/bin:/usr/sbin:/usr/local/sbin:/sbin:/Users/jinqin/Library/Application Support/cloud-code/installer/google-cloud-sdk/bin:/Users/jinqin/google-cloud-sdk/bin
+PATH = /usr/local/opt/libpq/bin:/Users/jinqin/go/bin:/Users/jinqin/.istioctl/bin:/Users/jinqin/.asdf/shims:/usr/local/opt/asdf/bin:/usr/local/opt/openjdk/bin:61051HOME/.asdf/installs/poetry/1.1.4/bin:/bin:/usr/bin:/usr/local/bin:/usr/sbin:/usr/local/sbin:/sbin:/Users/jinqin/Library/Application Support/cloud-code/installer/google-cloud-sdk/bin:/Users/jinqin/google-cloud-sdk/bin
 # environment
 LSCOLORS = Gxfxcxdxbxegedabagacad
 # environment
@@ -78,8 +76,6 @@ HOME = /Users/jinqin
 # default
 MAKEFILEPATH = $(shell /usr/bin/xcode-select -print-path 2>/dev/null || echo /Developer)/Makefiles
 # environment
-VSCODE_CLI = 1
-# environment
 VSCODE_CODE_CACHE_PATH = /Users/jinqin/Library/Application Support/Code/CachedData/c3511e6c69bb39013c4a4b7b9566ec1ca73fc4d5
 # environment
 LOGNAME = jinqin
@@ -93,32 +89,24 @@ VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 ^D = $(patsubst %/,%,$(dir $^))
 # environment
 XPC_FLAGS = 0x0
-# environment
-COLORTERM = truecolor
 # default
 MAKE = $(MAKE_COMMAND)
+# default
+MAKECMDGOALS := all
 # environment
-LC_TERMINAL = iTerm2
-# environment
-SHLVL = 3
+SHLVL = 1
 # default
 MAKE_VERSION := 3.81
 # environment
 USER = jqin
 # makefile
 .DEFAULT_GOAL := test
-# default
-MAKECMDGOALS := all
-# environment
-TERM_SESSION_ID = w0t0p0:9B8677DC-2A35-4B27-B244-108C7837D332
 # environment
 LESS = -R
 # automatic
 %D = $(patsubst %/,%,$(dir $%))
 # default
 MAKE_COMMAND := /Library/Developer/CommandLineTools/usr/bin/make
-# environment
-TERM_PROGRAM = iTerm.app
 # default
 .VARIABLES := 
 # environment
@@ -136,27 +124,17 @@ MFLAGS = -Rrqp
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
 # environment
-TERM_PROGRAM_VERSION = 3.4.14
-# environment
-XPC_SERVICE_NAME = 0
-# environment
-LC_TERMINAL_VERSION = 3.4.14
+XPC_SERVICE_NAME = com.microsoft.VSCode.33092
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # automatic
 +F = $(notdir $+)
-# environment
-ITERM_SESSION_ID = w0t0p0:9B8677DC-2A35-4B27-B244-108C7837D332
-# environment
-COLORFGBG = 15;0
 # environment
 __CF_USER_TEXT_ENCODING = 0x1F6:0x0:0x0
 # default
 MAKEFILES := 
 # automatic
 <F = $(notdir $<)
-# environment
-ITERM_PROFILE = Default
 # makefile (from `Makefile', line 1)
 github_user = jinqin2003
 # environment
@@ -178,11 +156,9 @@ SREIMAGE = docker.cogitocorp.us/sre-env:2.0.0-b5-5a5ac0b
 # environment
 LANG = C
 # environment
-TERM = xterm-256color
-# environment
-VSCODE_PID = 35688
+VSCODE_PID = 61044
 # variable set hash-table stats:
-# Load=85/1024=8%, Rehash=0, Collisions=5/109=5%
+# Load=73/1024=7%, Rehash=0, Collisions=2/97=2%
 
 # Pattern-specific Variable Values
 
@@ -301,9 +277,6 @@ delete:
 #  commands to execute (from `Makefile', line 40):
 	@echo "\n🔧 Deleting mutating-webhook..."
 	kubectl --namespace $(namespace) delete secrets mutating-webhook-ca
- 
-make: *** No rule to make target `all'.  Stop.
-
 	helm uninstall --namespace $(namespace) mutating-webhook
 	
 
@@ -324,6 +297,9 @@ deploy:
 #  File does not exist.
 #  File has not been updated.
 #  commands to execute (from `Makefile', line 35):
+ 
+make: *** No rule to make target `all'.  Stop.
+
 	@echo "\n🔧 Deploying mutating-webhook..."
 	helm --namespace $(namespace) install mutating-webhook ./chart
 	
@@ -351,6 +327,6 @@ docker-push:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Tue May 31 08:58:30 2022
+# Finished Make data base on Tue May 31 09:20:33 2022
 
  

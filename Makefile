@@ -17,6 +17,23 @@ build:
 	GOOS=darwin GOARCH=amd64 go build -o bin/admission-webhook-darwin-amd64 .
 	GOOS=linux GOARCH=amd64 go build -o bin/admission-webhook-linux-amd64 .
 
+.PHONY: install-prometheus
+install-prometheus:
+	@echo "\n📦 Installing prometheus..."
+	helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+	helm install prometheus prometheus-community/prometheus --namespace telemetry
+
+.PHONY: uninstall-prometheus
+uninstall-prometheus:
+	@echo "\n📦 Uninstalling prometheus..."
+	helm uninstall prometheus --namespace telemetry
+
+.PHONY: portforward-prometheus
+portforward-prometheus:
+	@echo "\n📦 Port forwarding prometheus..."
+	@export POD_NAME=$(kubectl get pods --namespace telemetry -l "app=prometheus,component=server" -o jsonpath="{.items[0].metadata.name}")
+	kubectl --namespace telemetry port-forward $$POD_NAME 9090
+
 .PHONY: docker-build
 docker-build:
 	@echo "\n📦 Building mutating-webhook Docker image..."
