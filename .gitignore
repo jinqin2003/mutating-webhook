@@ -16,3 +16,5 @@
 
 # vscode
 .vscode/
+.vscode/configurationCache.log
+.vscode/targets.log

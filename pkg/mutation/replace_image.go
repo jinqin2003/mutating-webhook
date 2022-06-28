@@ -29,6 +29,14 @@ func (ri replaceImage) Mutate(pod *corev1.Pod) (*corev1.Pod, error) {
 	sourceRegistry := os.Getenv("SOURCE_REGISTRY")
 	targetRegistry := os.Getenv("TARGET_REGISTRY")
 
+	for i, container := range mpod.Spec.initContainers {
+		if s.Contains(container.Image, sourceRegistry) {
+			image := s.Replace(container.Image, sourceRegistry, targetRegistry, 1)
+			ri.Logger.Debugf("pod init container image %s is replaced to %s", container.Image, image)
+			mpod.Spec.initContainers[i].Image = image
+		}
+	}
+
 	for i, container := range mpod.Spec.Containers {
 		if s.Contains(container.Image, sourceRegistry) {
 			image := s.Replace(container.Image, sourceRegistry, targetRegistry, 1)

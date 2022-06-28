@@ -1,5 +1,6 @@
-github_user = jinqin2003
+docker_hub_user = jinqin2003
 namespace = mutating
+POD_NAME = $(kubectl get pods --namespace telemetry -l "app=prometheus,component=server" -o jsonpath="{.items[0].metadata.name}")
 
 .PHONY: test
 test:
@@ -58,7 +59,6 @@ uninstall-cert-manager:
 .PHONY: install-prometheus
 install-prometheus:
 	@echo "\n📦 Installing prometheus..."
-	kubectl create namespace telemetry
 	helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
 	helm install prometheus prometheus-community/prometheus --namespace telemetry
 
@@ -70,18 +70,17 @@ uninstall-prometheus:
 .PHONY: portforward-prometheus
 portforward-prometheus:
 	@echo "\n📦 Port forwarding prometheus..."
-	@export POD_NAME=$(kubectl get pods --namespace telemetry -l "app=prometheus,component=server" -o jsonpath="{.items[0].metadata.name}")
-	kubectl --namespace telemetry port-forward ${POD_NAME} 9090
+	kubectl --namespace telemetry port-forward $(POD_NAME) 9090
 
 .PHONY: docker-build
 docker-build:
 	@echo "\n📦 Building mutating-webhook Docker image..."
-	docker build -t docker.io/$(github_user)/mutating-webhook:latest .
+	docker build -t docker.io/$(docker_hub_user)/mutating-webhook:latest .
 
 .PHONY: docker-push
 docker-push:
 	@echo "\n📦 Pushing mutating-webhook Docker image to docker.io ..."
-	docker push docker.io/$(github_user)/mutating-webhook:latest
+	docker push docker.io/$(docker_hub_user)/mutating-webhook:latest
 
 .PHONY: docker-build-push
 docker-build-push: docker-build docker-push
