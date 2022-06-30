@@ -14,7 +14,7 @@ test-chart:
 
 .PHONY: build
 build:
-	@echo "\n🔧  Building Go binaries..."
+	@echo "\n🔧  Building go binaries..."
 	GOOS=darwin GOARCH=amd64 go build -o bin/admission-webhook-darwin-amd64 .
 	GOOS=linux GOARCH=amd64 go build -o bin/admission-webhook-linux-amd64 .
 
