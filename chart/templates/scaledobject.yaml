@@ -1,0 +1,21 @@
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  labels:
+    app: {{ template "mutating-webhook.name" . }}
+  name: {{ template "mutating-webhook.name" . }}
+  namespace: {{ .Release.Namespace }}
+spec:
+  scaleTargetRef:
+    name: {{ template "mutating-webhook.name" . }}
+  pollingInterval: 15
+  cooldownPeriod:  30
+  minReplicaCount: 1
+  maxReplicaCount: 10
+  triggers:
+  - type: prometheus
+    metadata:
+      serverAddress: http://prometheus-server.telemetry.svc.cluster.local
+      metricName: mutating_webhook_mutation_requests_total
+      threshold: '1'
+      query: mutating_webhook_mutation_requests_total
