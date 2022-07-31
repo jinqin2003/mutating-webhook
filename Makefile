@@ -72,6 +72,18 @@ portforward-prometheus:
 	@echo "\n📦 Port forwarding prometheus..."
 	kubectl --namespace telemetry port-forward $(POD_NAME) 9090
 
+.PHONY: install-keda
+	@echo "\n📦 Installing keda..."
+	helm repo add kedacore https://kedacore.github.io/charts
+	helm repo update
+	kubectl create namespace keda
+	helm install keda kedacore/keda --namespace keda
+
+.PHONY: uninstall-keda
+	@echo "\n📦 Uninstalling keda..."
+	helm uninstall keda --namespace keda
+	kubectl delete ns keda
+
 .PHONY: docker-build
 docker-build:
 	@echo "\n📦 Building mutating-webhook Docker image..."
@@ -100,10 +112,14 @@ delete:
 pod:
 	@echo "\n🚀 Deploying test pod..."
 	kubectl apply -f pod/apps.ns.yaml
-	kubectl apply -f pod/test.pod.yaml
+	kubectl apply -f pod/test.pod1.yaml
+	kubectl apply -f pod/test.pod2.yaml
+	kubectl apply -f pod/test.pod3.yaml
 
 .PHONY: delete-pod
 delete-pod:
 	@echo "\n♻️ Deleting test pod..."
-	kubectl delete -f pod/test.pod.yaml
+	kubectl delete -f pod/test.pod1.yaml
+	kubectl delete -f pod/test.pod2.yaml
+	kubectl delete -f pod/test.pod3.yaml
 	kubectl delete -f pod/apps.ns.yaml
