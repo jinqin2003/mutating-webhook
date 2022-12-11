@@ -15,6 +15,5 @@
 # vendor/
 
 # vscode
-.vscode/
-.vscode/configurationCache.log
-.vscode/targets.log
+.vscode
+.vscode/*
