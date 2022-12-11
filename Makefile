@@ -74,6 +74,7 @@ portforward-prometheus:
 	kubectl --namespace telemetry port-forward $(POD_NAME) 9090
 
 .PHONY: install-keda
+install-keda:
 	@echo "\n📦 Installing keda..."
 	helm repo add kedacore https://kedacore.github.io/charts
 	helm repo update
@@ -81,6 +82,7 @@ portforward-prometheus:
 	helm install keda kedacore/keda --namespace keda
 
 .PHONY: uninstall-keda
+uninstall-keda:
 	@echo "\n📦 Uninstalling keda..."
 	helm uninstall keda --namespace keda
 	kubectl delete ns keda
