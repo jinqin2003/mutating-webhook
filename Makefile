@@ -1,6 +1,5 @@
 docker_hub_user = jinqin2003
 namespace = mutating
-POD_NAME = $(kubectl get pods --namespace telemetry -l "app=prometheus,component=server" -o jsonpath="{.items[0].metadata.name}")
 
 .PHONY: test
 test:
@@ -71,7 +70,7 @@ uninstall-prometheus:
 .PHONY: portforward-prometheus
 portforward-prometheus:
 	@echo "\n📦 Port forwarding prometheus..."
-	kubectl --namespace telemetry port-forward $(POD_NAME) 9090
+	@. ./run-port-forward.sh
 
 .PHONY: install-keda
 install-keda:
