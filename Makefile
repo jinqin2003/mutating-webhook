@@ -104,6 +104,7 @@ docker-build-push: docker-build docker-push
 .PHONY: deploy
 deploy:
 	@echo "\n🔧 Deploying mutating-webhook..."
+	kubectl create namespace mutating
 	helm --namespace $(namespace) install mutating-webhook ./chart
 
 .PHONY: delete
