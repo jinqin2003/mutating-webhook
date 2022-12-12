@@ -15,8 +15,8 @@ func TestReplaceImageMutate(t *testing.T) {
 		},
 		Spec: corev1.PodSpec{
 			Containers: []corev1.Container{{
-				Name:  "lifespan",
-				Image: "nginx:1.21",
+				Name:  "test",
+				Image: "docker.io/nginx:1.21",
 			}},
 		},
 	}
@@ -27,8 +27,8 @@ func TestReplaceImageMutate(t *testing.T) {
 		},
 		Spec: corev1.PodSpec{
 			Containers: []corev1.Container{{
-				Name:  "lifespan",
-				Image: "busybox",
+				Name:  "test",
+				Image: "docker.fake.io/nginx:1.21",
 			}},
 		},
 	}

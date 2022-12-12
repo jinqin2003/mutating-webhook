@@ -46,7 +46,7 @@ func pod() *corev1.Pod {
 		Spec: corev1.PodSpec{
 			Containers: []corev1.Container{{
 				Name:  "test",
-				Image: "busybox",
+				Image: "docker.fake.io/nginx:1.21",
 			}},
 		},
 	}
@@ -54,9 +54,8 @@ func pod() *corev1.Pod {
 
 func patch() string {
 	patch := `[
-		{"op":"replace","path":"/spec/containers/0/image","value":"nginx:1.21"}
-	]}
-]`
+		{"op":"replace","path":"/spec/containers/0/image","value":"docker.io/nginx:1.21"}
+    ]`
 
 	patch = strings.ReplaceAll(patch, "\n", "")
 	patch = strings.ReplaceAll(patch, "\t", "")

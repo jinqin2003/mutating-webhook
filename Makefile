@@ -5,7 +5,7 @@ POD_NAME = $(kubectl get pods --namespace telemetry -l "app=prometheus,component
 .PHONY: test
 test:
 	@echo "\n🛠️  Running unit tests..."
-	go test ./...
+	@. ./run-test.sh
 
 .PHONY: test-chart
 test-chart:
