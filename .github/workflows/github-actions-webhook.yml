@@ -16,5 +16,7 @@ jobs:
       - name: Build docker image
         run: make docker-build
       - name: Push docker image to hub.docker.com
+        env:
+          credentials: ${{ secrets.DOCKER_HUB_CREDENTIALS }}
         run: make docker-push
       - run: echo "🍏 This job's status is ${{ job.status }}."

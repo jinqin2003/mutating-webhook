@@ -95,6 +95,7 @@ docker-build:
 .PHONY: docker-push
 docker-push:
 	@echo "\n📦 Pushing mutating-webhook Docker image to docker.io ..."
+	docker login -u jinqin2003 -p $(credentials)
 	docker push docker.io/$(docker_hub_user)/mutating-webhook:latest
 
 .PHONY: docker-build-push
