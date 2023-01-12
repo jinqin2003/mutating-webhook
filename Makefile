@@ -6,17 +6,6 @@ test:
 	@echo "\n🛠️  Running unit tests..."
 	@. ./run-test.sh
 
-.PHONY: test-chart
-test-chart:
-	@echo "\n🛠️  Dry running helm chart..."
-	helm --namespace $(namespace) install mutating-webhook ./chart --dry-run
-
-.PHONY: build
-build:
-	@echo "\n🔧  Building Go binaries..."
-	GOOS=darwin GOARCH=amd64 go build -o bin/admission-webhook-darwin-amd64 .
-	GOOS=linux GOARCH=amd64 go build -o bin/admission-webhook-linux-amd64 .
-
 .PHONY: install-minikube
 install-minikube:
 	@echo "\n📦 Installing minikube on mac os..."
@@ -67,11 +56,6 @@ uninstall-prometheus:
 	@echo "\n📦 Uninstalling prometheus..."
 	helm uninstall prometheus --namespace telemetry
 
-.PHONY: portforward-prometheus
-portforward-prometheus:
-	@echo "\n📦 Port forwarding prometheus..."
-	@. ./run-port-forward.sh
-
 .PHONY: install-keda
 install-keda:
 	@echo "\n📦 Installing keda..."
@@ -85,6 +69,22 @@ uninstall-keda:
 	@echo "\n📦 Uninstalling keda..."
 	helm uninstall keda --namespace keda
 	kubectl delete ns keda
+
+.PHONY: test-chart
+test-chart:
+	@echo "\n🛠️  Dry running helm chart..."
+	helm --namespace $(namespace) install mutating-webhook ./chart --dry-run
+
+.PHONY: build
+build:
+	@echo "\n🔧  Building Go binaries..."
+	GOOS=darwin GOARCH=amd64 go build -o bin/admission-webhook-darwin-amd64 .
+	GOOS=linux GOARCH=amd64 go build -o bin/admission-webhook-linux-amd64 .
+
+.PHONY: portforward-prometheus
+portforward-prometheus:
+	@echo "\n📦 Port forwarding prometheus..."
+	@. ./run-port-forward.sh
 
 .PHONY: docker-build
 docker-build:
