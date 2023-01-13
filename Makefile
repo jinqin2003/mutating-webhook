@@ -111,6 +111,7 @@ delete:
 	@echo "\n🔧 Deleting mutating-webhook..."
 	kubectl --namespace $(namespace) delete secrets mutating-webhook-ca
 	helm uninstall --namespace $(namespace) mutating-webhook
+	kubectl delete namespace mutating
 
 .PHONY: pod
 pod:
