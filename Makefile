@@ -43,6 +43,7 @@ install-cert-manager:
 uninstall-cert-manager:
 	@echo "\n📦 Uninstalling cert-manager..."
 	helm --namespace cert-manager delete cert-manager
+	kubectl delete namespace cert-manager
 
 .PHONY: install-prometheus
 install-prometheus:
@@ -55,6 +56,7 @@ install-prometheus:
 uninstall-prometheus:
 	@echo "\n📦 Uninstalling prometheus..."
 	helm uninstall prometheus --namespace telemetry
+	kubectl delete namespace telemetry
 
 .PHONY: install-keda
 install-keda:
@@ -68,7 +70,7 @@ install-keda:
 uninstall-keda:
 	@echo "\n📦 Uninstalling keda..."
 	helm uninstall keda --namespace keda
-	kubectl delete ns keda
+	kubectl delete namespace keda
 
 .PHONY: test-chart
 test-chart:
