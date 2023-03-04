@@ -86,5 +86,7 @@ spec:
               readOnly: true
       volumes:
         - name: tls
-          secret:
-            secretName: {{ include "mutating-webhook.name" . }}-ca
+          projected:
+            sources:
+              - secret:
+                  name: {{ include "mutating-webhook.name" . }}-ca
