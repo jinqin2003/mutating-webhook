@@ -10,12 +10,12 @@ test:
 install-minikube:
 	@echo "\n📦 Installing minikube on mac os..."
 	@brew install minikube
-	@minikube start --kubernetes-version=v1.23.6
+	@minikube start --kubernetes-version=v1.28.0
 
 .PHONY: start-cluster
 start-cluster:
 	@echo "\n📦 Starting cluster..."
-	@minikube start --kubernetes-version=v1.23.6
+	@minikube start --kubernetes-version=v1.28.0
 
 .PHONY: stop-cluster
 stop-cluster:
