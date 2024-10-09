@@ -36,7 +36,7 @@ install-cert-manager:
 		cert-manager jetstack/cert-manager \
 		--namespace cert-manager \
 		--create-namespace \
-		--version v1.8.0 \
+		--version v1.16.0 \
 		--set installCRDs=true
 
 .PHONY: uninstall-cert-manager
