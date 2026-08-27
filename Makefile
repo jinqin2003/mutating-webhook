@@ -10,17 +10,17 @@ test:
 install-minikube:
 	@echo "\n📦 Installing minikube on mac os..."
 	@brew install minikube
-	@minikube start --kubernetes-version=v1.28.0
+	@minikube start --driver=krunkit
 
 .PHONY: start-cluster
 start-cluster:
 	@echo "\n📦 Starting cluster..."
-	@minikube start --kubernetes-version=v1.28.0
+	@minikube start --driver=krunkit
 
 .PHONY: stop-cluster
 stop-cluster:
 	@echo "\n📦 Stopping cluster..."
-	minikube stop
+	@minikube stop
 
 .PHONY: delete-cluster
 delete-cluster:
@@ -36,7 +36,7 @@ install-cert-manager:
 		cert-manager jetstack/cert-manager \
 		--namespace cert-manager \
 		--create-namespace \
-		--version v1.16.0 \
+		--version v1.21.1 \
 		--set installCRDs=true
 
 .PHONY: uninstall-cert-manager
